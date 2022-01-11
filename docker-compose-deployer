@@ -41,13 +41,15 @@ export COMPOSE_PROJECT_NAME=${COMPOSE_PROJECT_NAME-$(basename "$COMPOSE_PROJECT_
 export COMPOSE_PROJECT_COMPOSER_AUTH=${COMPOSE_PROJECT_COMPOSER_AUTH-${COMPOSER_AUTH-""}}
 export COMPOSE_PROJECT_CONFIG_DIR="$HOME/.$(basename $0)/${COMPOSE_PROJECT_NAME}"
 
-if [[ ! -d "${COMPOSE_PROJECT_CONFIG_DIR}" ]];then
-    mkdir -p "${COMPOSE_PROJECT_CONFIG_DIR}"
+if [[ ! -d "${COMPOSE_PROJECT_CONFIG_DIR}" ]]; then
+  echo -e "mkdir -p ${COMPOSE_PROJECT_CONFIG_DIR}"
+  mkdir -p "${COMPOSE_PROJECT_CONFIG_DIR}"
 fi
 
 rsync -r "${DIR}/" "${COMPOSE_PROJECT_CONFIG_DIR}/"
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
+  echo -e "export COMPOSE_PROJECT_MODE=mutagen"
   export COMPOSE_PROJECT_MODE="mutagen"
 fi
 

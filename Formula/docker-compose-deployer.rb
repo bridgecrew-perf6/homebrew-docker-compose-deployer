@@ -2,7 +2,7 @@ require 'formula'
 
 class DockerComposeDeployer < Formula
   url "https://github.com/lab-dvsoftware/homebrew-docker-compose-deployer.git", :using => :git
-  version "0.0.1"
+  version "0.0.2"
   revision 1
 
   depends_on 'coreutils'
